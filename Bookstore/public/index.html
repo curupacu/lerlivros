@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookstore</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container header-content">
+       <img src="./img/logo.png" alt="Logo Bookstore" style="height: 140px; width: 160px;">
+
+
+      <div class="search-bar">
+        <input type="text" placeholder="Pesquisar...">
+        <button aria-label="Pesquisar"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="feather feather-search">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg></button>
+      </div>
+
+      <div class="user-actions">
+        <div id="perfil-area">
+          <!-- Preenchido via JS abaixo -->
+        </div>
+ 
+        <a href="#" aria-label="Meus Favoritos"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="feather feather-heart">
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+            </path>
+          </svg></a>
+
+        <a href="#" aria-label="Meu Carrinho"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="feather feather-shopping-cart">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg></a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <ul class="container">
+      <li><a href="#" class="nav-link" data-target="catalog">Catálogo</a></li>
+      <li><a href="#" class="nav-link" data-target="promotions">Promoções</a></li>
+      <li><a href="#" class="nav-link" data-target="favorites">Favoritos</a></li>
+    </ul>
+  </nav>
+
+  <div class="banner"><img src="./Img/MaisVendidosMelhor.png" alt="Banner de Mais Vendidos"></div>
+
+  <main class="container">
+    <section class="section" id="catalog-section">
+      <h2 class="section-title">Mais Vendidos</h2>
+      <div class="book-list bestsellers-list" id="mais-vendidos-list">
+        <div class="arrow left-arrow">&lt;</div>
+        <div class="arrow right-arrow">&gt;</div>
+      </div>
+    </section>
+
+    <section class="section" id="highlights-section">
+      <h2 class="section-title">Destaques</h2>
+      <div class="book-list" id="destaques-list">
+        <div class="arrow left-arrow">&lt;</div>
+        <div class="arrow right-arrow">&gt;</div>
+      </div>
+    </section>
+
+    <section class="section" id="preorders-section">
+      <h2 class="section-title">Pré-vendas</h2>
+      <div class="book-list" id="prevendas-list">
+        <div class="arrow left-arrow">&lt;</div>
+        <div class="arrow right-arrow">&gt;</div>
+      </div>
+    </section>
+
+    <section class="section" id="favorites-section">
+      <h2 class="section-title">Seus Favoritos da Comunidade</h2>
+      <div class="book-grid" id="favoritos-comunidade-grid"></div>
+    </section>
+
+    <section class="section hidden" id="promotions-section">
+      <h2 class="section-title">Promoções Especiais</h2>
+      <div class="promotions-content">
+        <div class="filter-sidebar">
+          <h3>Filtrar Promoções</h3>
+
+          <div class="filter-group">
+            <h4>Categoria</h4>
+            <label><input type="checkbox" data-filter-type="category" value="ficcao"> Ficção</label>
+            <label><input type="checkbox" data-filter-type="category" value="fantasia"> Fantasia</label>
+            <label><input type="checkbox" data-filter-type="category" value="romance"> Romance</label>
+            <label><input type="checkbox" data-filter-type="category" value="terror"> Terror</label>
+            <label><input type="checkbox" data-filter-type="category" value="biografia"> Biografia</label>
+          </div>
+
+          <div class="filter-group">
+            <h4>Preço</h4>
+            <label><input type="checkbox" data-filter-type="price" value="under20"> Até R$20</label>
+            <label><input type="checkbox" data-filter-type="price" value="20to50"> R$20 - R$50</label>
+            <label><input type="checkbox" data-filter-type="price" value="over50"> Acima de R$50</label>
+          </div>
+
+          <div class="filter-group">
+            <h4>Idioma</h4>
+            <label><input type="checkbox" data-filter-type="language" value="en"> Inglês</label>
+            <label><input type="checkbox" data-filter-type="language" value="pt"> Português</label>
+            <label><input type="checkbox" data-filter-type="language" value="es"> Espanhol</label>
+          </div>
+
+          <button id="apply-filters-btn" class="btn-primary" style="margin-top: 20px;">Aplicar Filtros</button>
+          <button id="clear-filters-btn" class="btn-secondary" style="margin-top: 10px;">Limpar Filtros</button>
+        </div>
+
+        <div class="promotions-list book-grid" id="promocoes-grid">
+          <p style="margin: 20px; text-align: center;">Nenhuma promoção ativa no momento. Volte em breve!</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="book-details-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div class="modal-body">
+        <img id="modal-book-image" src="" alt="Capa do Livro">
+        <div class="modal-info">
+          <h3 id="modal-book-title">Título do Livro</h3>
+          <p id="modal-book-authors">Autor(es)</p>
+          <p id="modal-book-publisher">Editora: </p>
+          <p id="modal-book-published-date">Data de Publicação: </p>
+          <p id="modal-book-page-count">Páginas: </p>
+          <p id="modal-book-language">Idioma: </p>
+          <p id="modal-book-description">Descrição do Livro</p>
+          <div class="modal-buttons">
+            <a id="modal-book-preview-link" href="#" target="_blank" class="btn-preview">Pré-visualizar</a>
+            <button id="add-to-favorites-btn" class="btn-primary">Adicionar aos Favoritos</button>
+            <button id="remove-from-favorites-btn" class="btn-secondary" style="display: none;">Remover dos
+              Favoritos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="./script.js"></script>
+
+  <script>
+    const perfilArea = document.getElementById("perfil-area");
+    const dados = localStorage.getItem("usuario");
+
+   if (dados) {
+  const usuario = JSON.parse(dados);
+  const avatarUrl = usuario.avatar || usuario.foto;
+
+  perfilArea.innerHTML = `
+    <a href="perfil.html" title="${usuario.nome}" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+      <img src="${avatarUrl}" alt="Avatar" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 5px rgba(0,0,0,0.2);">
+      <span style="font-weight: 500; font-size: 1rem;">${usuario.nome.split(" ")[0]}</span>
+    </a>
+  `;
+} else {
+  perfilArea.innerHTML = `
+    <a href="login.html" aria-label="Minha Conta">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+    </a>
+  `;
+}
+
+  </script>
+</body>
+
+</html>

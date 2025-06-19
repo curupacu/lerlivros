@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Bookstore</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+        <h1>Bem-vindo à Bookstore</h1>
+        <p>Faça login para continuar</p>
+
+        <div id="g_id_onload"
+            data-client_id="407396053872-4vpae6e4pe12fqqrpqsn0rda47qbb2i4.apps.googleusercontent.com"
+            data-callback="handleCredentialResponse"
+            data-auto_prompt="false">
+        </div>
+
+        <div class="g_id_signin"
+            data-type="standard"
+            data-size="large"
+            data-theme="outline"
+            data-text="signin_with"
+            data-shape="rectangular"
+            data-logo_alignment="left">
+        </div>
+    </div>
+
+    <script>
+        function handleCredentialResponse(response) {
+    const jwt = response.credential;
+    const payload = JSON.parse(atob(jwt.split('.')[1]));
+
+    // Salvar os dados no localStorage
+    localStorage.setItem("usuario", JSON.stringify({
+        nome: payload.name,
+        email: payload.email,
+        foto: payload.picture
+    }));
+
+    // Redirecionar para o perfil
+    window.location.href = "perfil.html";
+}
+
+        
+    </script>
+</body>
+</html>
